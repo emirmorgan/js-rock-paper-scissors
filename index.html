@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Rock, Paper, Scissors | @aemirdnr</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <div class="row text-center py-3">
+        <div class="col-4 col-md-5">
+          <h1 id="playerScore">0</h1>
+        </div>
+        <div class="col-4 col-md-2">
+          <h6><strong>Scoreboard</strong></h6>
+          <hr style="height: 4px;">
+        </div>
+        <div class="col-4 col-md-5">
+          <h1 id="machineScore">0</h1>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <h1 id="result"><strong>-</strong> </h1>
+      </div>
+      <div class="row mt-5 gap-5 gap-md-0">
+        <div id="player" class="col-12 col-md-5">
+          <h3 class="text-center">You</h3>
+          <div class="player-card text-center py-5 mx-auto">
+            <div id="playerImg" class="img-default" style="align-self: center;"></div>
+          </div>
+          <div class="player-button d-flex justify-content-center gap-5 mt-3">
+            <button id="rock">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAACcElEQVRoge2Zv2sUQRTHP3dIMOS0UNTkRAtRQRCD8QoLOwtRwUKsLPwHTGNhoeI/YaeIhYWIYmwEORsRtNFDRBB/gZAqomJyitGYcLGYt+4wmdVdZ9+ehPnAsHuP2e/7PmZnZ28WIpFIJLIMqQMr+m0ihBZwD/gOzAEPgL19dfQXtgE3gA/AR+A6cAz4Biw6bQ44CbSl/zRwB9hZuWuHUeALSw0n7TawCdgs51n9pqVP37grRm4CG4EmcIvU4IjVt2nFL8nvtcCExCbk2s/AJ8yo7a6iCICvYmK9FRuxDNec/kl8jRXbRfZIdYGtGsZdevgNZ8UTgzarrXgbGJbWltjFci37yTI8Dyx44r5C7HjLirUk9javmZBnfA+zTrjmzmfEO56YzRvPeTPAX27mMcWE8gR47IlnjWDplFVIFoUKqQcmcudB3wgt5L9h2RTyL7gruNbtpTrZ1wGvJUEPuKqVCMVCasB9EX8JjGkksVAr5JAITwEbNBI4qBVyTYRPaYh7UCvknQhv1xD3oFbIrAgPaoh7UFvZF+S4qpCdiihSyJQct2gYCaVIIR057tMwUiXHMffss4ryqU32BmbHYxE4rJHAQfUV5ayId9B/hVctZAgz6bVHJdmU6CrmYFyS+P6elsWo5HilmIMB0lVea1TOif5lJf3fnJBEL4CVJWs3gPeif6Bk7SXUgaeS7EKJujXSl9OHJer+kTHMZ4PkFhgI1GuQFjED7AjUK8QR4IcknwROYyZqI+f1g5j93zOkT8MusL90pznYAzwnezO6SHtExSPhUgeOYj76TAI/yWd8FrO/ewU4WLnrSCQSiYTyCwP72VYg9HxtAAAAAElFTkSuQmCC"/>
+            </button>
+            <button id="paper">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAAxElEQVRoge3aMQrCUBRE0VHcguL+tyJW6bRwObHQwCd8k0Dee05xDwTBIvOvio1KwF/cJY0m123poIeVkHFrcZGf5z3tvUGR1Rf0WHGKCoS4IcQNIW4IcUOIG0LcEOKGEDeEuCHEDSFuCHFDiBtC3BDixiVk7Zex3cJutHFn6RoiBrL1ds6SHt/nX5Ku0QMZ5juhEb2BLO1OeMR8INO0kxLRDmSbdp7N4yVjIFv77RT6TvQGKq6UCOnzt4mqiEHBHycgwBu2o5lsWnAWTgAAAABJRU5ErkJggg=="/>
+            </button>
+            <button id="scissors">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAEeUlEQVRoge3ZaYiVVRgH8N+4gWlkBX3QcUwbURNsL4iC1OhLRAsRqG2UUZEtJC1oIJVERBAUQdlqm+lE5QZRVFRmEX0oSnOgLDUn96UwlWymD895u3fu3Ot9752JKO4fDved95zzP89znuU85x0aaKCBBhpooIH/HAb+2wLUg/44DbOxAnvRhZ9wK5p6u8BJuAtt+A5b0Y6VmIVj6+Tth5NxB5ZhtxC8uB0oep5V6wJDcQkWYFMZ8tK2Gzfl4G3CJNyGt7CzDNf3eAYzMDzNuzL1fZVH+HG4E+/hYAn5ZjyL6cI6LWn8dLGT2bgHygg+UezkG9heRvD1eB5XYWQF2QYpWKcsmnAd1pSQH8IqzMEpqvvmpWmRTlyDm7FYuGCp4BuwENfi+Cq8GVoVNrQHBuD1ogW24WVMwzE5FyjGnDJCd+HnxHs9xtTI2YTJ+DZxPVVu0PzU+Zsw64DaZe+GYfg9cb6JGzC2Dp6BOB9PYKPChnyNo0sHjxJx0InL6pG6Ar5Ii55d47yhuFxYbpfuFv0BczG43MT706Bl9clbEYsT74wcY4/DTCzHft2F/0Z4zOkOE58DcF56fq5ukcvjx/Q7ukJ/q0jrFwur9UvvO0VyWYq3RQrOhQ1C81E1CjoS92BEhf4bE2+2QU1iV+eLXS7e9f3i9J4prFMX/khkeQN8GB5WCOYFFcZdkPrfT39/rmcW24J7cVQ9gpciI82DcXoeZOsrjB1b0l9OkawdFFZqw4PicD0VQ/Iq0VSkRJ4i7Ax8ik9EYD6W3o9RiIkMg4TLdIosc0i4zYliQyZgfGotFdbvEmm3XdR161LLarweg/NaJBOwWSG2usQBVw5Z7q8U8BmGCAtMExZpExYqLY9Kq4JHhavXpUgL1ioUiF14tcLYj1L/lBr4i9FfZLeLcLdIHJ/pfr5slMqbvIo0iVM/i5HVODM9dyjvGi86vMXqRZYBVyX+JVRXZIK4I6wtGrsQR6T+jvRuQpm581R2jeK2KwlTzQVL0Zzm76mmyOqSBdfoWca8kvpuKTP/6pyKZG27/FUwkTy6sK3a2XEIv+BjUXIsFVmoGB+IMmQKnizp25V+l4kTvBJG4GlcKCy/SZwxmw/zOxiPpPlfUnuwl6JFKLxfz1P+ocT9eA6ekWqzXtYO4Ky+UISImS4RfOOFyW8XVcOfIjDzKtIh4m2yuNbOFufVa8Iz2rFPXDneEQlHXynSLC5N5XZsXs75K9P4l+oVoi8UIdzqBeW/fuRtW1QuQqvi10QytF6CIpwgrsm1KrBDfHQY3pMyP9Ylskm9IUloS1zLVd/ZEaJ078KiPljbgkQ2tw+49iSuvO6RBfiOPljbVAX/PLKXXJlbNeccnymyp5fr/o0PE+FivfumuijxrFBdmeJM1daLNbuhVeGT5RL1W2a0qARqCfSdaf0+wzkKymzFfeLLYq3ZbKK4fFVTYK+wRJ8qkaFV1E71ngOVWrv4sP2P/X+jUjxMxRU4VwRkLVbZJ075DnElflehim6ggQYaaOD/hb8AZIraEYYkIWcAAAAASUVORK5CYII="/>
+            </button>
+          </div>
+        </div>
+        <div class="col-12 col-md-2">
+          <div class="d-flex justify-content-center h-100">
+            <h3 class="align-self-center"><strong>VS</strong></h3>
+          </div>
+        </div>
+        <div id="machine" class="col-12 col-md-5">
+          <h3 class="text-center">Machine</h3>
+          <div class="player-card text-center py-5 mx-auto">
+            <div id="machineImg" class="img-default" style="align-self: center;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>

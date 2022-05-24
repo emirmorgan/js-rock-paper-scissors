@@ -1,0 +1,84 @@
+.space {
+    padding-top: 136px;
+}
+
+@media (max-width: 991.98px) {
+    .space {
+        padding-top: 36px;
+    }
+}
+
+.player-card {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+    padding: 15px;
+
+    border-radius: 0.8rem;
+    box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.215);
+}
+
+.player-card img {
+    align-self: center;
+
+    width: 125px;
+    height: 125px;
+}
+
+
+.player-button button {
+    border: 0;
+    padding: 12px;
+
+    background: transparent;
+
+    border-radius: 0.6rem;
+    box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.215);
+    transition: transform 200ms ease-in-out;
+}
+
+.player-button button img {
+    width: 32px;
+    height: 32px;
+}
+
+.player-button button:hover {
+    transform: scale(1.1);
+}
+
+.img-default {
+    background-image: url("../img/default.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 125px;
+    height: 125px;
+}
+
+.rock {
+    background-image: url("../img/rock.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 125px;
+    height: 125px;
+}
+
+.paper {
+    background-image: url("../img/paper.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 125px;
+    height: 125px;
+}
+
+.scissors {
+    background-image: url("../img/scissors.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 125px;
+    height: 125px;
+}
