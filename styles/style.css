@@ -2,6 +2,7 @@
     display: none;
     position: fixed;
     
+    z-index: 100;
     justify-content: center;
 
     width: 100%;
