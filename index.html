@@ -14,6 +14,13 @@
     />
   </head>
   <body>
+    <div id="finishScreen" class="finish">
+      <div class="finish-card p-4 gap-5 justify-content-center text-center">
+        <h1 id="whoWon">-</h1>
+        <h1 id="finishScore">0 : 0</h1>
+        <button class="mx-auto p-2" onclick="reset()">Play Again!</button>
+      </div>
+    </div>
     <div class="container mx-auto">
       <div class="row text-center py-3">
         <div class="col-4 col-md-5">
@@ -53,7 +60,7 @@
             <h3 class="align-self-center"><strong>VS</strong></h3>
           </div>
         </div>
-        <div id="machine" class="col-12 col-md-5">
+        <div id="machine" class="col-12 col-md-5 mb-5 mb-md-0">
           <h3 class="text-center">Machine</h3>
           <div class="player-card text-center py-5 mx-auto">
             <div id="machineImg" class="img-default" style="align-self: center;"></div>

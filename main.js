@@ -18,6 +18,10 @@ let machineoptions = ["rock", "paper", "scissors"];
 let userChoice;
 let result = document.querySelector("#result");
 
+let finishScreen = document.querySelector("#finishScreen");
+let finishScore = document.querySelector("#finishScore");
+let whoWon = document.querySelector("#whoWon");
+
 playerOptions.forEach(choice => {
     choice.addEventListener('click', function() {
         userChoice = choice.id;
@@ -68,14 +72,40 @@ playerOptions.forEach(choice => {
             machineScoreboard.innerHTML = machineScore;
         }
 
-        // Win - Reset
+        // Win - Finish
         if (machineScore == 3 || playerScore == 3) {
-            machineScore = 0;
-            playerScore = 0;
-
-            playerScoreboard.innerHTML = playerScore;
-            machineScoreboard.innerHTML = machineScore;
-            result.style.color = "black";
+            //Finish
+            finishScreen.style.display = "flex";
+            finishScore.innerHTML = playerScore + " : " + machineScore;
+            
+            //PLAYER WIN
+            if (playerScore == 3) {
+                whoWon.innerHTML = "YOU WIN!";
+                whoWon.style.color = "green";
+            }
+            //MACHINE WIN
+            else {
+                whoWon.innerHTML = "YOU LOSE :(";
+                whoWon.style.color = "red";
+            }
         }
     })
 })
+
+function reset() {
+    //Reset
+    playerScore = 0;
+    machineScore = 0;
+    
+    playerScoreboard.innerHTML = playerScore;
+    machineScoreboard.innerHTML = machineScore;
+
+    finishScreen.style.display = "none";
+
+    playerImg.className = '';
+    machineImg.className = '';
+    playerImg.classList.add("img-default");
+    machineImg.classList.add("img-default");
+    result.innerHTML = "-";
+    result.style.color = "black";
+}

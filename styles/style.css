@@ -1,11 +1,42 @@
-.space {
-    padding-top: 136px;
+.finish {
+    display: none;
+    position: fixed;
+    
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.55);
 }
 
-@media (max-width: 991.98px) {
-    .space {
-        padding-top: 36px;
-    }
+.finish-card {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    width: 300px;
+    height: 300px;
+
+    background-color: #fff;
+    border-radius: 0.3rem;
+}
+
+.finish-card button {
+    width: 80%;
+
+    font-weight: bold;
+
+    background-color: #fff;
+
+    border: 0px;
+    border-radius: 0.25rem;
+    box-shadow: inset 1px 1px 4px #000;
+    transition: transform 200ms ease-in-out;
+}
+
+.finish-card button:hover {
+    transform: scale(1.05);
 }
 
 .player-card {
@@ -81,4 +112,14 @@
     background-position: center;
     width: 125px;
     height: 125px;
+}
+
+.space {
+    padding-top: 136px;
+}
+
+@media (max-width: 991.98px) {
+    .space {
+        padding-top: 36px;
+    }
 }
